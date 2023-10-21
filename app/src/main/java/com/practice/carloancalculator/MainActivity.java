@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 UserInputStorage.setLoanAmount(loanInputNUM);       //stores double in the UserInputStorage
 
                 //Loan Term Parsing and Storage
-                tempValue = loanInput.getText().toString();         //assigns user input into a String temporary field for parsing
+                tempValue = termInput.getText().toString();         //assigns user input into a String temporary field for parsing
                 termInputNUM = Integer.parseInt(tempValue);         //parses string temporary field and converts into a integer
                 UserInputStorage.setLoanLength(termInputNUM);       //stores integer in the UserInputStorage
 
                 //Storage Validation
                 Log.d(TAG, "onClick: Loan Amount: " + UserInputStorage.getLoanAmount());    //validation to make sure its storing it correctly
-                Log.d(TAG, "onClick: Loan Term:" + UserInputStorage.getLoanLength());       //validation to make sure its storing it correctly
+                Log.d(TAG, "onClick: Loan Term: " + UserInputStorage.getLoanLength());       //validation to make sure its storing it correctly
             }
         });
     }
