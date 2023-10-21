@@ -13,7 +13,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     Button saveButton;
     EditText loanInput;
+    EditText termInput;
     double loanInputNUM;
+    int termInputNUM;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -23,14 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
         saveButton = (Button)findViewById(R.id.saveButton);
         loanInput = (EditText)findViewById(R.id.loanInputText);
+        termInput = (EditText)findViewById(R.id.termInputText);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tempValue = loanInput.getText().toString(); //assigns user input into a String temporary field for parsing
-                loanInputNUM = Double.parseDouble(tempValue); //parses string temporary field and converts into a double
-                UserInputStorage.setLoanAmount(loanInputNUM); //stores double in the UserInputStorage
-                Log.d(TAG, "onClick: " + UserInputStorage.getLoanAmount()); //validation to make sure its storing it correctly
+                //Loan Amount Parsing and Storage
+                String tempValue = loanInput.getText().toString();  //assigns user input into a String temporary field for parsing
+                loanInputNUM = Double.parseDouble(tempValue);       //parses string temporary field and converts into a double
+                UserInputStorage.setLoanAmount(loanInputNUM);       //stores double in the UserInputStorage
+
+                //Loan Term Parsing and Storage
+                tempValue = loanInput.getText().toString();         //assigns user input into a String temporary field for parsing
+                termInputNUM = Integer.parseInt(tempValue);         //parses string temporary field and converts into a integer
+                UserInputStorage.setLoanLength(termInputNUM);       //stores integer in the UserInputStorage
+
+                //Storage Validation
+                Log.d(TAG, "onClick: Loan Amount: " + UserInputStorage.getLoanAmount());    //validation to make sure its storing it correctly
+                Log.d(TAG, "onClick: Loan Term:" + UserInputStorage.getLoanLength());       //validation to make sure its storing it correctly
             }
         });
     }
