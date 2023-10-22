@@ -1,10 +1,10 @@
 package com.practice.carloancalculator;
 
 public class LoanCalculator extends MainActivity{
-    double payment;
-    double monthlyBalance;
-    double remainingBalance;
-    double interest;
+    static double payment;
+    static double monthlyBalance;
+    static double remainingBalance;
+    static double interest;
 
     public LoanCalculator() {
         this.payment = payment;
@@ -13,7 +13,7 @@ public class LoanCalculator extends MainActivity{
         this.interest = interest;
     }
 
-    public double getPayment() {
+    public static double getPayment() {
         payment = getMonthlyBalance() + getInterest();
         return payment;
     }
@@ -22,7 +22,7 @@ public class LoanCalculator extends MainActivity{
         this.payment = payment;
     }
 
-    public double getMonthlyBalance() {
+    public static double getMonthlyBalance() {
         monthlyBalance = getRemainingBalance()/UserInputStorage.getLoanLength();
         return monthlyBalance;
     }
@@ -31,7 +31,7 @@ public class LoanCalculator extends MainActivity{
         this.monthlyBalance = monthlyBalance;
     }
 
-    public double getRemainingBalance() {
+    public static double getRemainingBalance() {
         remainingBalance = UserInputStorage.getLoanAmount() - UserInputStorage.getDownPayment();
         return remainingBalance;
     }
@@ -40,7 +40,7 @@ public class LoanCalculator extends MainActivity{
         this.remainingBalance = remainingBalance;
     }
 
-    public double getInterest() {
+    public  static double getInterest() {
         interest = (UserInputStorage.getApr() * monthlyBalance)/100;
         return interest;
     }
